@@ -1,8 +1,17 @@
 /* eslint-disable */
+
 import "./style.css";
 
-function actionChange() {
-  let number = [
+window.onload = function() {
+  document.getElementById("generadorButton");
+  document.addEventListener("click", generateCard);
+  document.getElementById("aplicarDimen");
+  document.addEventListener("click", aplicarDimen);
+};
+
+function generateCard() {
+  const palos = ["spades", "club", "heart", "diamond"];
+  const valores = [
     "A",
     "2",
     "3",
@@ -17,23 +26,37 @@ function actionChange() {
     "Q",
     "K"
   ];
-  let indexNumb = Math.floor(Math.random() * number.length);
-  return number[indexNumb];
+  const simbolos = {
+    spades: "♦",
+    club: "♠",
+    heart: "♥",
+    diamond: "♣"
+  };
+
+  const paloAleatorio = palos[Math.floor(Math.random() * palos.length)];
+  console.log(paloAleatorio);
+  const valorAleatorio = valores[Math.floor(Math.random() * valores.length)];
+  const card = document.getElementById("carta");
+
+  card.className = `carta ${paloAleatorio}`;
+  card.innerHTML = `
+  <span class="top-simbol" id="arriba">${simbolos[paloAleatorio]}</span>
+        <span class="number" id="number">${valorAleatorio}</span>
+        <span class="bottom-simbol" id="abajo">${simbolos[paloAleatorio]}</span>`;
 }
 
-function randomSimbol() {
-  let simbol = ["spades", "diamons", "hearts", "clubs"];
-  let indexSimbol = Math.floor(Math.random() * simbol.length);
-  return simbol[indexSimbol];
-}
-let boton = document.getElementById("generador");
-boton.addEventListener("click", botonGenerar);
+//temporizador para crear una nueva carta cada 10s
+setInterval(generateCard, 10000);
+// función para aplicar los tamños que especifique el usuario
 
-window.onload = () => {
-  //document.querySelector(".carta").classList.add(randomSimbol());
-  document.getElementById("number").innerHTML = actionChange();
-};
+function aplicarDimen() {
+  const width = document.getElementById("width").value;
+  const heigth = document.getElementById("height").value;
+  const cart = document.getElementById("carta");
 
-function botonGenerar() {
-  document.getElementById("number").innerHTML = actionChange();
+  if (width && heigth) {
+    cart.style.width = width + "px";
+    cart.style.height = heigth + "px";
+  }
 }
+generateCard();

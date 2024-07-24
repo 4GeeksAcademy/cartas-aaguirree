@@ -14,14 +14,21 @@
   </head>
   <body>
     <div class="fondo container-fluid text-center">
-      <div class="carta">
-        <span class="top-simbol">&spades;</span>
+      <div class="carta" id="carta">
+        <span class="top-simbol" id="arriba">&spades;</span>
         <span class="number" id="number">7</span>
-        <span class="bottom-simbol">&spades;</span>
+        <span class="bottom-simbol" id="abajo">&spades;</span>
       </div>
     </div>
+    <button id="generadorButton">Genera tus cartas aleatorias!</button>
 
-    <button id="generador">Genera tus cartas aleatorias!</button>
+    <div class="inpust-dimensiones">
+      <label for="width">Ancho:</label>
+      <input type="text" id="width" placeholder="400" />
+      <label for="height">Altura:</label>
+      <input type="text" id="height" placeholder="400" />
+      <button id="aplicarDimen">Aplica las dimensiones</button>
+    </div>
     <script src="../src/app.js"></script>
   </body>
 </html>
