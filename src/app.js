@@ -3,10 +3,12 @@
 import "./style.css";
 
 window.onload = function() {
-  document.getElementById("generadorButton");
-  document.addEventListener("click", generateCard);
-  document.getElementById("aplicarDimen");
-  document.addEventListener("click", aplicarDimen);
+  document
+    .getElementById("generadorButton")
+    .addEventListener("click", generateCard);
+  document
+    .getElementById("aplicarDimen")
+    .addEventListener("click", aplicarDimen);
 };
 
 function generateCard() {
@@ -54,9 +56,12 @@ function aplicarDimen() {
   const heigth = document.getElementById("height").value;
   const cart = document.getElementById("carta");
 
-  if (width && heigth) {
+  if (width < 500 && heigth < 600) {
     cart.style.width = width + "px";
     cart.style.height = heigth + "px";
+  } else {
+    alert("Ingrese otros valores");
   }
 }
 generateCard();
+console.log(generateCard);
