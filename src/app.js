@@ -63,5 +63,3 @@ function aplicarDimen() {
     alert("Ingrese otros valores");
   }
 }
-generateCard();
-console.log(generateCard);
